@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{escapegame.nom}}{% endblock %}
+
+{% block MAIN %}
+    {# ESCAPE GAME DETAILS #}
+    <section id="details">
+        <div class="cartes">
+            <h3>{{escapegame.nom}}</h3>
+            <p>{{escapegame.description}}</p>
+            <p>{{ escapegame.duree|date('H:i') }}</p>
+            <p>{{escapegame.difficulte}}</p>
+        </div>
+    </section>
+
+    {# COMMENTAIRES #}
+    <section id="commentaires">
+        <h2>Commentaires</h2>
+        <div class="commentaire">
+            {% for commentaire in commentaires %}
+                <div class="commentaire">
+                    <p>{{ commentaire.texte}}</p>
+                </div>
+                <a class="modifier" href="{{ path('app_commentaires_notes_update', {'id': commentaire.id}) }}">modifier</a>
+                <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_commentaires_notes_delete', {'id': commentaire.id}) }}">
+                    <input type="hidden" name="_method" value="delete"> 
+                    <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ commentaire.id) }}">
+                    <input id="delete" type="submit" value="Supprimer">     
+                </form>
+            {% endfor %}
+        </div>
+    </section>
+    <a href={{ path('app_commentaires_notes_create', {'id': escapegame.id }) }}>Ajouter un commentaire</a>
+{% endblock %}

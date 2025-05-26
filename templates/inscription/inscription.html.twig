@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block MAIN %}
+    {# FORMULAIRE D'INSCRIPTION #}
+    <section id="inscriptionForm">
+        <h2>Inscrivez-vous !</h2>
+        <div class="form">
+            {{ form_start(userform) }}         
+                {{ form_widget(userform) }}
+                <button>Envoyer</button>
+            {{ form_end(userform) }}
+        </div>
+    </section>
+{% endblock %}

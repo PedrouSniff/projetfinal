@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification escape game{% endblock %}
+
+{% block MAIN %}
+    {# MODIFICATION ESCAPE GAME #}
+    <section id="escapegameupdate">
+        <h2>Modifier l'escape game</h2>
+        <div class="form">
+            {{ form_start(escapegameform) }}
+                {{ form_widget(escapegameform) }}
+                <button type="submit">Modifier</button>
+            {{ form_end(escapegameform) }}
+        </div>
+    </section>
+{% endblock %}

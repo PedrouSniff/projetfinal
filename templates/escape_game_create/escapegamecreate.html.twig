@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un escape game{% endblock %}
+
+{% block MAIN %}
+    {# CRÉATION ESCAPE GAME #}
+    <section id="escapegamecreate">
+        <h2>Créer un nouveau Escape Game</h2>
+        <div class="form">
+            {{ form_start(escapegameform) }}
+                {{ form_widget(escapegameform) }}
+                <button type="submit">Créer</button>
+            {{ form_end(escapegameform) }}
+        </div>
+    </section>
+{% endblock %}

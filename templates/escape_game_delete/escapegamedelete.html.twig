@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression escape game{% endblock %}
+
+{% block MAIN %}
+    {# SUPPRESSION ESCAPE GAME #}
+    <section id="escapegamedelete">
+        <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" 
+            action="{{ path('app_escape_game_delete', {'id': escapegame.id}) }}">
+            <input type="hidden" name="_method" value="delete"> 
+            <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ escapegame.id) }}">
+            <input id="delete" type="submit" value="Supprimer">     
+        </form>
+    </section>
+{% endblock %}

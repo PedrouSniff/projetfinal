@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification commentaire{% endblock %}
+
+{% block MAIN %}
+    {# MODIFICATION COMMENTAIRES #}
+    <section id="commentairesupdate">
+        <h2>Modifier le commentaire</h2>
+        <div class="form">
+            {{ form_start(commentairesform) }}
+                {{ form_widget(commentairesform) }}
+                <button type="submit">Modifier</button>
+            {{ form_end(commentairesform) }}
+        </div>
+    </section>
+{% endblock %}

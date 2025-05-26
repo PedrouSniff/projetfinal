@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un commentaire{% endblock %}
+
+{% block MAIN %}
+    {# CRÉATION COMMENTAIRES #}
+    <section id="commentairescreate">
+        <h2>Ajouter un commentaire</h2>
+        <div class="form">
+            {{ form_start(commentairesform) }}
+                {{ form_widget(commentairesform) }}
+                <button>Envoyer</button>
+            {{ form_end(commentairesform) }}
+        </div>
+    </section>
+{% endblock %}
