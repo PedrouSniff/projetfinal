@@ -16,17 +16,22 @@
     {# COMMENTAIRES #}
     <section id="commentaires">
         <h2>Commentaires</h2>
-        <div class="commentaire">
+        <div class="commentaire">                    
             {% for commentaire in commentaires %}
-                <div class="commentaire">
-                    <p>{{ commentaire.texte}}</p>
+                <div class="commentaire-note">
+                    <p>{{commentaire.texte}}</p>
+                    {% for note in commentaire.escapegame.notes %}
+                        <p>{{note.etoile}}</p>
+                    {% endfor %}
                 </div>
-                <a class="modifier" href="{{ path('app_commentaires_notes_update', {'id': commentaire.id}) }}">modifier</a>
-                <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_commentaires_notes_delete', {'id': commentaire.id}) }}">
-                    <input type="hidden" name="_method" value="delete"> 
-                    <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ commentaire.id) }}">
-                    <input id="delete" type="submit" value="Supprimer">     
-                </form>
+                {% if commentaire.user == app.user %}
+                    <a class="modifier" href="{{ path('app_commentaires_notes_update', {'id': commentaire.id}) }}">modifier</a>
+                    <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_commentaires_notes_delete', {'id': commentaire.id}) }}">
+                        <input type="hidden" name="_method" value="delete"> 
+                        <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ commentaire.id) }}">
+                        <input id="delete" type="submit" value="Supprimer">     
+                    </form>
+                {% endif %}
             {% endfor %}
         </div>
     </section>

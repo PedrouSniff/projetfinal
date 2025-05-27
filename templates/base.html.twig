@@ -12,12 +12,21 @@
         {% block HEADER %}
             <header>
                 <nav>
-                    <img src="" alt="">
                     <ul>
                         <li><a class="{% if app.request.attributes.get('_route') == 'app_accueil' %} active {% endif %}" href={{ path('app_accueil')}}>Accueil</a></li>
                         <li><a class="{% if app.request.attributes.get('_route') == 'app_escape_game' %} active {% endif %}" href={{ path('app_escape_game')}}>Escape Game</a></li>
+                        {% if app.user != null %}
+                            <li><a class="{% if app.request.attributes.get('_route') == 'app_logout' %} active {% endif %}" href={{ path('app_logout')}}>Profil</a></li>
+                        {% endif %}
+                        {% if app.user == null %}
+                            <li><a class="{% if app.request.attributes.get('_route') == 'app_inscription' %} active {% endif %}" href={{ path('app_inscription')}}>Inscription</a></li>
+                        {% endif %}
+                        <li><a href=""><img src="" alt=""></a></li>
                         {% if app.user == null %}
                             <li><a class="{% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}" href={{ path('app_login')}}>Connexion</a></li>
+                        {% endif %}
+                        {% if app.user != null %}
+                            <li><a class="{% if app.request.attributes.get('_route') == 'app_logout' %} active {% endif %}" href={{ path('app_logout')}}>Déconnexion</a></li>
                         {% endif %}
                         <li><a class="{% if app.request.attributes.get('_route') == 'app_calendrier' %} active {% endif %}" href={{ path('app_calendrier')}}>Calendrier</a></li>
                         <li><a class="{% if app.request.attributes.get('_route') == 'app_contact' %} active {% endif %}" href={{ path('app_contact')}}>Contact</a></li>
@@ -34,6 +43,7 @@
 
         {# FOOTER #}
         {% block FOOTER %}
+            {# <li><a class="{% if app.request.attributes.get('_route') == 'app_escape_game' %} active {% endif %}" href={{ path('app_escape_game')}}>FAQ</a></li> #}
             <footer>
                 <p>© 2025 - Tous droits réservés</p>
                 <ul>

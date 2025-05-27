@@ -14,18 +14,18 @@
             {% for escapegame in escapegames %}
                 <a href="{{ path('app_escape_game_details', {'id': escapegame.id }) }}" >
                     <h3>{{escapegame.nom}}</h3>
-                    {# <p>{{escapegame.description}}</p>
-                    <p>{{ escapegame.duree|date('H:i') }}</p>
-                    <p>{{escapegame.difficulte}}</p> #}
+    
                 </a>
-                <div>
-                    <a class="modifier" href="{{ path('app_escape_game_update', {'id': escapegame.id}) }}">modifier</a>
-                    <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_escape_game_delete', {'id': escapegame.id}) }}">
-                        <input type="hidden" name="_method" value="delete"> 
-                        <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ escapegame.id) }}">
-                        <input id="delete" type="submit" value="Supprimer">     
-                    </form>
-                </div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div>
+                        <a class="modifier" href="{{ path('app_escape_game_update', {'id': escapegame.id}) }}">modifier</a>
+                        <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_escape_game_delete', {'id': escapegame.id}) }}">
+                            <input type="hidden" name="_method" value="delete"> 
+                            <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ escapegame.id) }}">
+                            <input id="delete" type="submit" value="Supprimer">     
+                        </form>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
     </section>

@@ -4,5 +4,12 @@
 
 {% block MAIN %}
     {# CONTACT #}
-    <section id="contact"></section>
+    <section id="contact">
+        <h2>Ajouter un commentaire</h2>
+        <div class="form">
+            {{ form_start(formcontact) }}
+                {{ form_widget(formcontact) }}
+            {{ form_end(formcontact) }}
+        </div>
+    </section>
 {% endblock %}

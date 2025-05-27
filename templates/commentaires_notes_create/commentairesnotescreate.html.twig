@@ -4,13 +4,13 @@
 
 {% block MAIN %}
     {# CRÉATION COMMENTAIRES #}
-    <section id="commentairescreate">
+    <section id="commentairesNotescreate">
         <h2>Ajouter un commentaire</h2>
         <div class="form">
-            {{ form_start(commentairesform) }}
-                {{ form_widget(commentairesform) }}
+            {{ form_start(commentaireNoteForm) }}
+                {{ form_widget(commentaireNoteForm) }}
                 <button>Envoyer</button>
-            {{ form_end(commentairesform) }}
+            {{ form_end(commentaireNoteForm) }}
         </div>
     </section>
 {% endblock %}

@@ -2,20 +2,23 @@
 
 namespace App\Form;
 
-use App\Entity\Commentaires;
-use App\Entity\Escapegame;
 use App\Entity\user;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Escapegame;
+use App\Entity\Commentaires;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CommentairesForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('texte')
+            ->add('texte', TextareaType::class, [
+                'label' => ' ',
+            ])
         ;
     }
 

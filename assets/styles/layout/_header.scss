@@ -1,0 +1,15 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+// HEADER
+header {
+    text-transform: uppercase;
+    display: flex;
+    width: 100%;
+    background-color: black;
+    
+    a {
+        color: white;
+    }
+}

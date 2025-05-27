@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Commentaires;
+use App\Entity\Note;
+use App\Form\NoteForm;
 use App\Entity\Escapegame;
+use App\Entity\Commentaires;
 use App\Form\CommentairesForm;
+use App\Form\CommentaireNoteForm;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CommentairesRepository;
@@ -17,66 +20,72 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[IsGranted("ROLE_USER")]
 final class CommentairesNotesCRUDController extends AbstractController
 {
-    // CREATION COMMENTAIRES
+    // CREATION COMMENTAIRES ET NOTES
     #[Route('/commentaires/notes/create/{id}', name: 'app_commentaires_notes_create')]
-    public function commentairecreate(CommentairesRepository $commentaires,NoteRepository $note , Request $request, EntityManagerInterface $entitymanager, Escapegame $escapegame): Response
+    public function commentairecreate(CommentairesRepository $commentaires,NoteRepository $notes, Request $request, EntityManagerInterface $entitymanager, Escapegame $escapegame): Response
     {
         $commentaires = new Commentaires();
 
-        $formCommentaires = $this->createForm(CommentairesForm::class, $commentaires);
+        $notes = new Note();
 
-        $formCommentaires->handleRequest($request);
+        $form = $this->createForm(CommentaireNoteForm::class, [
+            'commentaire' => $commentaires,
+            'note' => $notes
+        ]);
+
+        $form->handleRequest($request);
 
         $get = $this->getUser();
         
-        $getescapegame = $request->get('id', 'bot');
-
-        if ($formCommentaires->isSubmitted() && $formCommentaires->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $commentaires->setUser($get);
+            $commentaires->setEscapegame($escapegame);
 
-            $entitymanager->persist($get);
-
-            $commentaires->setEscapegame($getescapegame);
+            $notes->setUser($get);
+            $notes->setEscapegame($escapegame);
 
             $entitymanager->persist($commentaires);
+            $entitymanager->persist($notes);
 
             $entitymanager->flush();
 
-            $this->addFlash('success', 'Commentaires Ajouté !');
+            $this->addFlash('success', 'Commentaire et Note Ajouté !');
 
             return $this->redirectToRoute('app_escape_game');
-
         }
+
         return $this->render('commentaires_notes_create/commentairesnotescreate.html.twig', [
-            'commentairesform' => $formCommentaires->createView(),
+            'commentaireNoteForm' => $form->createView(),
             'escapegame' => $escapegame,
         ]);
     }
 
     // MODIFICATION COMMENTAIRES
     #[Route('/commentaires/notes/update/{id}', name: 'app_commentaires_notes_update')]
-    public function commentaireupdate(Commentaires $commentaires, Request $request, EntityManagerInterface $entitymanager, Escapegame $escapegame): Response
+    public function commentaireupdate(Commentaires $commentaires,Note $notes, Request $request, EntityManagerInterface $entitymanager): Response
     {
-        $form = $this->createForm(CommentairesForm::class, $commentaires);
+        $form = $this->createForm(CommentaireNoteForm::class, [
+            'commentaire' => $commentaires,
+            'note' => $notes
+        ]);
 
         $form->handleRequest($request);
-
-
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $entitymanager->persist($commentaires);
+            $entitymanager->persist($notes);
 
             $entitymanager->flush();
 
-            $this->addflash('success', 'votre escape game a bien été modifié');
+            $this->addflash('success', 'Votre commentaire et votre note a bien été modifié');
 
             return $this->redirectToRoute('app_escape_game');
         }
 
         return $this->render('commentaires_notes_update/commentairesnotesupdate.html.twig', [
-            'commentairesform' => $form->createView()
+            'commentairesNotesform' => $form->createView(),
         ]);
     }
 
@@ -99,3 +108,4 @@ final class CommentairesNotesCRUDController extends AbstractController
         return $this->redirectToRoute("app_escape_game");
     }
 }
+
