@@ -10,6 +10,7 @@
             <p>{{escapegame.description}}</p>
             <p>{{ escapegame.duree|date('H:i') }}</p>
             <p>{{escapegame.difficulte}}</p>
+            <img src="{{ asset('images/' ~ escapegame.imageName) }}" alt="">
         </div>
     </section>
 
@@ -20,10 +21,8 @@
             {% for commentaire in commentaires %}
                 <div class="commentaire-note">
                     <p>{{commentaire.texte}}</p>
-                    {% for note in commentaire.escapegame.notes %}
-                        <p>{{note.etoile}}</p>
-                    {% endfor %}
-                </div>
+                    <p>{{commentaire.note.etoile}}</p>
+                </div> 
                 {% if commentaire.user == app.user %}
                     <a class="modifier" href="{{ path('app_commentaires_notes_update', {'id': commentaire.id}) }}">modifier</a>
                     <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_commentaires_notes_delete', {'id': commentaire.id}) }}">

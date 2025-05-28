@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250513124207 extends AbstractMigration
+final class Version20250528081817 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,19 +21,19 @@ final class Version20250513124207 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql(<<<'SQL'
-            ALTER TABLE note ADD escapegame_id INT DEFAULT NULL, ADD user_id INT DEFAULT NULL, CHANGE noteetoile noteetoile INT NOT NULL
+            ALTER TABLE commentaires DROP FOREIGN KEY FK_D9BEC0C4BA9CD190
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE note ADD CONSTRAINT FK_CFBDFA14A92488CD FOREIGN KEY (escapegame_id) REFERENCES escapegame (id)
+            DROP INDEX UNIQ_D9BEC0C4BA9CD190 ON commentaires
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE note ADD CONSTRAINT FK_CFBDFA14A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)
+            ALTER TABLE commentaires CHANGE commentaire_id note_id INT DEFAULT NULL
         SQL);
         $this->addSql(<<<'SQL'
-            CREATE INDEX IDX_CFBDFA14A92488CD ON note (escapegame_id)
+            ALTER TABLE commentaires ADD CONSTRAINT FK_D9BEC0C426ED0855 FOREIGN KEY (note_id) REFERENCES note (id)
         SQL);
         $this->addSql(<<<'SQL'
-            CREATE INDEX IDX_CFBDFA14A76ED395 ON note (user_id)
+            CREATE UNIQUE INDEX UNIQ_D9BEC0C426ED0855 ON commentaires (note_id)
         SQL);
     }
 
@@ -41,19 +41,19 @@ final class Version20250513124207 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql(<<<'SQL'
-            ALTER TABLE note DROP FOREIGN KEY FK_CFBDFA14A92488CD
+            ALTER TABLE commentaires DROP FOREIGN KEY FK_D9BEC0C426ED0855
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE note DROP FOREIGN KEY FK_CFBDFA14A76ED395
+            DROP INDEX UNIQ_D9BEC0C426ED0855 ON commentaires
         SQL);
         $this->addSql(<<<'SQL'
-            DROP INDEX IDX_CFBDFA14A92488CD ON note
+            ALTER TABLE commentaires CHANGE note_id commentaire_id INT DEFAULT NULL
         SQL);
         $this->addSql(<<<'SQL'
-            DROP INDEX IDX_CFBDFA14A76ED395 ON note
+            ALTER TABLE commentaires ADD CONSTRAINT FK_D9BEC0C4BA9CD190 FOREIGN KEY (commentaire_id) REFERENCES note (id) ON UPDATE NO ACTION ON DELETE NO ACTION
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE note DROP escapegame_id, DROP user_id, CHANGE noteetoile noteetoile VARCHAR(255) NOT NULL
+            CREATE UNIQUE INDEX UNIQ_D9BEC0C4BA9CD190 ON commentaires (commentaire_id)
         SQL);
     }
 }

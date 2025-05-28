@@ -17,17 +17,18 @@ final class EscapeGameCRUDController extends AbstractController
 {
     // CREATION ESCAPE GAME
     #[Route('/escape_game/create', name: 'app_escape_game_create')]
-    public function escapegamecreate(EscapegameRepository $escapegame, Request $request, EntityManagerInterface $entitymanager): Response
+    public function escapegamecreate(Request $request, EntityManagerInterface $entitymanager): Response
     {
         $escapegame = new Escapegame();
 
         $form = $this->createForm(EscapegameForm::class, $escapegame);
 
-        $form->handleRequest($request);
+        $form->handleRequest($request);   
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             $entitymanager->persist($escapegame);
+            // dd($escapegame);
 
             $entitymanager->flush();
 

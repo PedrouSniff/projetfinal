@@ -3,10 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Note;
-use App\Form\NoteForm;
 use App\Entity\Escapegame;
 use App\Entity\Commentaires;
-use App\Form\CommentairesForm;
 use App\Form\CommentaireNoteForm;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,15 +20,14 @@ final class CommentairesNotesCRUDController extends AbstractController
 {
     // CREATION COMMENTAIRES ET NOTES
     #[Route('/commentaires/notes/create/{id}', name: 'app_commentaires_notes_create')]
-    public function commentairecreate(CommentairesRepository $commentaires,NoteRepository $notes, Request $request, EntityManagerInterface $entitymanager, Escapegame $escapegame): Response
+    public function commentairecreate(Request $request, EntityManagerInterface $entitymanager, Escapegame $escapegame): Response
     {
-        $commentaires = new Commentaires();
-
-        $notes = new Note();
+        $commentaire = new Commentaires();
+        $note = new Note();
 
         $form = $this->createForm(CommentaireNoteForm::class, [
-            'commentaire' => $commentaires,
-            'note' => $notes
+            'commentaire' => $commentaire,
+            'note' => $note
         ]);
 
         $form->handleRequest($request);
@@ -39,14 +36,16 @@ final class CommentairesNotesCRUDController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $commentaires->setUser($get);
-            $commentaires->setEscapegame($escapegame);
+            $commentaire->setUser($get);
+            $commentaire->setEscapegame($escapegame);
 
-            $notes->setUser($get);
-            $notes->setEscapegame($escapegame);
+            $note->setUser($get);
+            $note->setEscapegame($escapegame);
 
-            $entitymanager->persist($commentaires);
-            $entitymanager->persist($notes);
+            $commentaire->setNote($note);
+
+            $entitymanager->persist($commentaire);
+            $entitymanager->persist($note);
 
             $entitymanager->flush();
 
@@ -63,19 +62,19 @@ final class CommentairesNotesCRUDController extends AbstractController
 
     // MODIFICATION COMMENTAIRES
     #[Route('/commentaires/notes/update/{id}', name: 'app_commentaires_notes_update')]
-    public function commentaireupdate(Commentaires $commentaires,Note $notes, Request $request, EntityManagerInterface $entitymanager): Response
+    public function commentaireupdate(Commentaires $commentaire,Note $note, Request $request, EntityManagerInterface $entitymanager): Response
     {
         $form = $this->createForm(CommentaireNoteForm::class, [
-            'commentaire' => $commentaires,
-            'note' => $notes
+            'commentaire' => $commentaire,
+            'note' => $note
         ]);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $entitymanager->persist($commentaires);
-            $entitymanager->persist($notes);
+            $entitymanager->persist($commentaire);
+            $entitymanager->persist($note);
 
             $entitymanager->flush();
 
