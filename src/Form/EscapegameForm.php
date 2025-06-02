@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class EscapegameForm extends AbstractType
 {
@@ -17,7 +18,14 @@ class EscapegameForm extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('duree')
-            ->add('difficulte')
+            ->add('difficulte', IntegerType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'min' => 0,
+                    'max' => 5,
+                    'step' => 1,
+                ],
+            ])               
             ->add('imageFile', FileType::class, [
                 'required'   => false,
                 'mapped'     => true,

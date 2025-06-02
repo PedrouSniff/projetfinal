@@ -4,57 +4,57 @@
 
 // FORMULAIRE
 .form {
-@include mixins.flex(column);
-width: 90%;
-max-width: 600px;
-padding: 2rem;
-background-color: white;
-border-radius: 1rem;
+    @include mixins.flex(column);
+    width: 90%;
+    max-width: 600px;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
 
     label {
-    font-weight: bold;
-    margin-top: 1rem;
-    color: v.$primarycolor;
-    font-family: "Lora"
+        font-weight: bold;
+        margin-top: 1rem;
+        color: v.$primarycolor;
+        font-family: "Lora"
     }
 
     input,textarea,select {
-    width: 100%;
-    padding: 0.7rem;
-    border-radius: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 17px;
-    font-family: "Lora";
+        width: 100%;
+        padding: 0.7rem;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 17px;
+        font-family: "Lora";
     }
 
     button {
-    margin-top: 2rem;
-    padding: 0.7rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    background-color: v.$secondarycolor;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: "Lora";
+        margin-top: 2rem;
+        padding: 0.7rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        background-color: v.$secondarycolor;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-weight: bold;
+        font-family: "Lora";
     }
 }
 
 section h2 {
-text-align: center;
-color: white;
-font-size: 30px;
-margin-top: 2rem;
-margin-bottom: 2rem;
-font-family: "SpecialElite";
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-family: "SpecialElite";
 }
 
 #connexion, #inscriptionForm, #escapegamecreate, #escapegameupdate,#commentairesNotescreate, #commentairesupdate, #contact {
-@include mixins.flex($direction: column);
-background-color: v.$primarycolor;
-padding-bottom: 3rem;
+    @include mixins.flex($direction: column);
+    background-color: v.$primarycolor;
+    padding-bottom: 3rem;
 }

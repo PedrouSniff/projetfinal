@@ -28,15 +28,6 @@ class Escapegame
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTime $duree = null;
 
-    #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName')]
-    private ?File $imageFile = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?string $imageName = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
-
     /**
      * @var Collection<int, Note>
      */
@@ -208,6 +199,15 @@ class Escapegame
         return $this;
     }
 
+    #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
@@ -231,10 +231,5 @@ class Escapegame
     public function getImageName(): ?string
     {
         return $this->imageName;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
     }
 }

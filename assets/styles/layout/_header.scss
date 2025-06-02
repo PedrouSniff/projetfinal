@@ -4,38 +4,38 @@
 
 // HEADER
 header {
-background-color: black;
-text-transform: uppercase;
-padding: 2rem 4rem;
+    background-color: black;
+    text-transform: uppercase;
+    padding: 2rem 4rem;
 
 
     nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    @include mixins.flex();
+        max-width: 1200px;
+        margin: 0 auto;
+        @include mixins.flex();
 
         ul {
-        @include mixins.flex();
-        gap: 4rem;
+            @include mixins.flex();
+            gap: 4rem;
 
             .nav_liens {
-            display: flex;
-            gap: 2rem;
+                display: flex;
+                gap: 2rem;
 
                 a {
-                font-family: "SpecialElite";
-                letter-spacing: 2px;
-                color: white;
-                display: block;
-                @include mixins.hover();
+                    font-family: "SpecialElite";
+                    letter-spacing: 2px;
+                    color: white;
+                    display: block;
+                    @include mixins.hover();
                 }
             }
 
             .logo {
-            @include mixins.flex();
+                @include mixins.flex();
 
                 img {
-                height: 100px;
+                    height: 100px;
                 }
             }
         }   

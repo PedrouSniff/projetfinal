@@ -1,0 +1,76 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+#details {
+    background-color: v.$primarycolor;
+    text-align: center;
+    padding: 4rem 2rem;
+    @include mixins.flex($direction: column);
+
+    h3 {
+        font-family: "SpecialElite";
+        color: white;
+        font-size: 28px;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-family: "Lora";
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 17px;
+        max-width: 80vw;
+    }    
+
+    img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        margin-bottom: 2rem;
+        border-radius: 10px;
+        border: 2px solid v.$secondarycolor;
+    }
+}
+
+#commentaires {
+    background-color: v.$primarycolor;
+    @include mixins.flex($direction: column);
+
+    h2 {
+        margin-top: 0rem;
+    }
+
+    .commentaire {
+        margin-top: 4rem;
+        text-align: center;
+        @include mixins.flex();
+
+
+        .ALLavis {
+            @include mixins.flex();
+            gap: 2rem;
+        }
+
+        .commentaires {
+            padding: 1.5rem 2rem;
+            width: 300px;
+            border-radius: 8px;
+            background-color: white;
+            transition: border-color 0.3s;
+
+            p {
+                font-family: "Lora";
+                width: 100%;  
+                color: v.$primarycolor;
+                font-size: 16px;
+                margin: 0.5rem 0;
+            }
+
+            .note {
+                color: v.$accentcolor;
+                font-size: 20px;
+            }
+        }
+    }
+}

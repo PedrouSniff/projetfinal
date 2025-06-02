@@ -8,8 +8,8 @@
         <div class="cartes">
             <h3>{{escapegame.nom}}</h3>
             <p>{{escapegame.description}}</p>
-            <p>{{ escapegame.duree|date('H:i') }}</p>
-            <p>{{escapegame.difficulte}}</p>
+            <p>Durée : {{ escapegame.duree|date('H:i') }}</p>
+            <p>Difficulté : {{escapegame.difficulte}}</p>
             <img src="{{ asset('images/' ~ escapegame.imageName) }}" alt="">
         </div>
     </section>
@@ -19,9 +19,13 @@
         <h2>Commentaires</h2>
         <div class="commentaire">                    
             {% for commentaire in commentaires %}
-                <div class="commentaire-note">
+                <div class="commentaires">
                     <p>{{commentaire.texte}}</p>
-                    <p>{{commentaire.note.etoile}}</p>
+                    <p class="note">
+                    {% for i in 1..commentaire.note.etoile %}
+                        <i class="fa-solid fa-star"></i>                            
+                    {% endfor %}
+                    </p>
                 </div> 
                 {% if commentaire.user == app.user %}
                     <a class="modifier" href="{{ path('app_commentaires_notes_update', {'id': commentaire.id}) }}">modifier</a>

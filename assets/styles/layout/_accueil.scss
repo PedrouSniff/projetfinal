@@ -4,107 +4,107 @@
 
 // ACCUEIL
 #accueil {
-background-color: v.$primarycolor;
-padding: 4rem 2rem;
+    background-color: v.$primarycolor;
+    padding: 4rem 2rem;
 
     .intro {
-    @include mixins.flex($direction: column);
-    text-align: center;
+        @include mixins.flex($direction: column);
+        text-align: center;
 
         h2 {
-        font-family: "SpecialElite";
-        color: white;
-        font-size: 40px;
-        margin-bottom: 2rem;
-        margin-top: 0rem;
+            font-family: "SpecialElite";
+            color: white;
+            font-size: 40px;
+            margin-bottom: 2rem;
+            margin-top: 0rem;
         }
 
         p {
-        font-family: "Lora";
-        color: white;
-        margin-bottom: 1rem;
-        font-size: 17px
+            font-family: "Lora";
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 17px
         }
     }
 
 .cartes {
-@include mixins.flex($direction: column);
-margin-top: 4rem;
-width: 100%;
+    @include mixins.flex($direction: column);
+    margin-top: 4rem;
+    width: 100%;
 
     h3 {
-    font-family: "SpecialElite";
-    color: white;
-    font-size: 28px;
-    margin-bottom: 2rem;
+        font-family: "SpecialElite";
+        color: white;
+        font-size: 28px;
+        margin-bottom: 2rem;
     }
 
     .escapegames {
-    @include mixins.flex ($direction : row, $justify : center, $align : center, $wrap: wrap);
-    gap: 2rem;
-    width: 100%;
+        @include mixins.flex ($direction : row, $justify : center, $align : center, $wrap: wrap);
+        gap: 2rem;
+        width: 100%;
 
         .escapegame {
-        @include mixins.flex($direction: column);
-        width: 400px;
-        text-align: center;
-        transition: transform 0.3s ease;
+            @include mixins.flex($direction: column);
+            width: 500px;
+            text-align: center;
+            transition: transform 0.3s ease;
 
             &:hover {
-            transform: scale(1.05);
+                transform: scale(1.05);
             }
 
             h3 {
-            font-family: "SpecialElite";
-            color: white;
-            font-size: 28px;
-            margin-bottom: 1rem;
+                font-family: "SpecialElite";
+                color: white;
+                font-size: 28px;
+                margin-bottom: 1rem;
             }
 
             img {
-            width: 100%;
-            border-radius: 6px;
-            border-radius: 10px;
-            border: 2px solid v.$secondarycolor;
+                width: 100%;
+                border-radius: 6px;
+                border-radius: 10px;
+                border: 2px solid v.$secondarycolor;
             }
         }
     }
 }
 
     .commentaires {
-    margin-top: 4rem;
-    text-align: center;
+        margin-top: 4rem;
+        text-align: center;
 
         h3 {
-        font-family: "SpecialElite";
-        color: white;
-        font-size: 28px;
-        margin-bottom: 2rem;
+            font-family: "SpecialElite";
+            color: white;
+            font-size: 28px;
+            margin-bottom: 2rem;
         }
 
         .ALLavis {
-        @include mixins.flex();
-        gap: 2rem;
+            @include mixins.flex();
+            gap: 2rem;
         }
 
         .avis {
-        padding: 1.5rem 2rem;
-        width: 300px;
-        border-radius: 8px;
-        background-color: white;
-        transition: border-color 0.3s;
+            padding: 1.5rem 2rem;
+            width: 300px;
+            border-radius: 8px;
+            background-color: white;
+            transition: border-color 0.3s;
 
             p {
-            font-family: "Lora";
-            width: 100%;  
-            color: v.$primarycolor;
-            font-size: 16px;
-            margin: 0.5rem 0;
+                font-family: "Lora";
+                width: 100%;  
+                color: v.$primarycolor;
+                font-size: 16px;
+                margin: 0.5rem 0;
             }
 
             .note {
-            color: v.$accentcolor;
-            font-size: 20px;
+                color: v.$accentcolor;
+                font-size: 20px;
             }
         }
     }
