@@ -18,6 +18,12 @@ class NoteForm extends AbstractType
         $builder
             ->add('etoile', IntegerType::class, [
                 'label' => ' ',
+                'attr' => [
+                    'class' => 'form-control',
+                    'min' => 0,
+                    'max' => 5,
+                    'step' => 1,
+                ],
             ])
         ;
     }

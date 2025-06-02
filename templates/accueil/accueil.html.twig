@@ -5,6 +5,38 @@
 {% block MAIN %}
     {# ACCUEIL #}
     <section id="accueil">
-    
+        {# INTRO #}
+        <div class="intro">
+            <h2>Bienvenue sur Enigma</h2>
+            <p>Venez tester vos compétences en résolution d'énigmes et en travail d'équipe dans nos Escape Games passionnants.</p>
+            <p>Réservez dès maintenant votre expérience inoubliable !</p>
+        </div>
+        {# CARTES #}
+        <div class="cartes">
+            <h3>Les nouveautés</h3>
+            <div class="escapegames">
+                {% for escapegame in escapegames %}
+                    <div class="escapegame">
+                        <h3>{{ escapegame.nom }}</h3>
+                        <img src="{{ asset('images/' ~ escapegame.imageName) }}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="commentaires">
+            <h3>Avis des joueurs</h3>
+            <div class="ALLavis">
+                {% for commentaire in commentaires %}
+                    <div class="avis">
+                        <p>{{ commentaire.texte }}</p>
+                        <p class="note">
+                            {% for i in 1..commentaire.note.etoile %}
+                                <i class="fa-solid fa-star"></i>                            
+                            {% endfor %}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </section>
 {% endblock %}

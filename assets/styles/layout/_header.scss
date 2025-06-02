@@ -4,12 +4,40 @@
 
 // HEADER
 header {
-    text-transform: uppercase;
-    display: flex;
-    width: 100%;
-    background-color: black;
-    
-    a {
-        color: white;
+background-color: black;
+text-transform: uppercase;
+padding: 2rem 4rem;
+
+
+    nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    @include mixins.flex();
+
+        ul {
+        @include mixins.flex();
+        gap: 4rem;
+
+            .nav_liens {
+            display: flex;
+            gap: 2rem;
+
+                a {
+                font-family: "SpecialElite";
+                letter-spacing: 2px;
+                color: white;
+                display: block;
+                @include mixins.hover();
+                }
+            }
+
+            .logo {
+            @include mixins.flex();
+
+                img {
+                height: 100px;
+                }
+            }
+        }   
     }
 }

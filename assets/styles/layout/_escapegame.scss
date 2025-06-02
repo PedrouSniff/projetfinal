@@ -1,0 +1,130 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+#escapegame {
+    background-color: v.$primarycolor;
+    text-align: center;
+    padding: 4rem 2rem;
+    @include mixins.flex($direction: column);
+
+    .intro {
+    @include mixins.flex($direction: column);
+    text-align: center;
+
+        h2 {
+        font-family: "SpecialElite";
+        color: white;
+        font-size: 40px;
+        margin-bottom: 2rem;
+        margin-top: 0rem;
+        }
+
+        p {
+        font-family: "Lora";
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 17px
+        }
+
+        a {
+        font-family: "Lora";
+        color: v.$secondarycolor;
+        margin-bottom: 1rem;
+        font-size: 17px;
+        @include mixins.hover();
+        }
+    }
+
+    .cartes {
+    margin-top: 2rem;
+    width: 100%;
+    @include mixins.flex();
+
+        .escapegame {
+        @include mixins.flex($direction: column);
+        width: 400px;
+
+        .actions {
+        @include mixins.flex();
+
+            .modifier {
+            font-family: "Lora";
+            font-weight: 600;
+            color : white;
+            display: inline-block;
+            border-radius: 4px;
+            background-color: v.$secondarycolor;
+            font-size: 17px;
+            padding: 10px;
+            width: 80px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            margin-right: 1rem;
+            transition: all 400ms;
+
+                &:hover {
+                    background-color: v.$accentcolor;
+                }
+            }
+
+            .fa-bounce {
+            display: none;                                                                                                                            
+            }
+
+            .fa-mark {
+            display: inline-block;
+            }
+
+            :hover .fa-bounce {
+            display: inline-block;
+            }
+
+            :hover .pen, :hover .xmark {
+            display: none;
+            }
+
+            form {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: v.$secondarycolor;
+            padding: 10px;
+            width: 80px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            margin-right: 1rem;
+            transition: all 400ms;
+
+                &:hover {
+                    background-color: v.$accentcolor;
+                }
+
+                button {
+                    color : white;
+                    background: none;
+                    border: none;
+                    font-size: 17px;
+                    font-family: "Lora";
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+        h3 {
+        font-family: "SpecialElite";
+        color: white;
+        font-size: 28px;
+        margin-bottom: 2rem;
+        }
+
+        img {
+        width: 100%;
+        border-radius: 6px;
+        border-radius: 10px;
+        border: 2px solid v.$secondarycolor;
+        }
+    }
+}

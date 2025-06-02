@@ -1,0 +1,42 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+// FOOTER
+footer {
+@include mixins.flex($direction : row, $justify : space-evenly, $align : center, $wrap: nowrap);
+background-color: black;
+color: white;
+padding: 3rem 2rem;
+text-align: center;
+
+    .footer_logo img {
+    width: 100px;
+    }
+
+    p {
+    font-size: 15px;
+    font-family: "Lora";
+    }
+
+    ul {
+    @include mixins.flex();
+    gap: 1.5rem;
+
+        li a {
+        color: white;
+        font-size: 15px;
+        transition: color 0.7s;
+        font-family: "Lora";
+
+            &:hover {
+            color: v.$accentcolor;
+            }
+        }   
+    }
+
+    .footer_socials i {
+    font-size: 25px;
+
+    }
+}

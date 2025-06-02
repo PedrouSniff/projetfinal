@@ -20,6 +20,7 @@ final class CommentairesNotesCRUDController extends AbstractController
 {
     // CREATION COMMENTAIRES ET NOTES
     #[Route('/commentaires/notes/create/{id}', name: 'app_commentaires_notes_create')]
+    #[IsGranted("ROLE_USER")]
     public function commentairecreate(Request $request, EntityManagerInterface $entitymanager, Escapegame $escapegame): Response
     {
         $commentaire = new Commentaires();
@@ -62,6 +63,7 @@ final class CommentairesNotesCRUDController extends AbstractController
 
     // MODIFICATION COMMENTAIRES
     #[Route('/commentaires/notes/update/{id}', name: 'app_commentaires_notes_update')]
+    #[IsGranted("ROLE_USER")]
     public function commentaireupdate(Commentaires $commentaire,Note $note, Request $request, EntityManagerInterface $entitymanager): Response
     {
         $form = $this->createForm(CommentaireNoteForm::class, [
@@ -90,6 +92,7 @@ final class CommentairesNotesCRUDController extends AbstractController
 
     // SUPPRESSION COMMENTAIRES
     #[Route('/commentaires/notes/delete/{id}', name: 'app_commentaires_notes_delete')]
+    #[IsGranted("ROLE_USER")]
     public function commentairedelete(Commentaires $commentaires, Request $request, EntityManagerInterface $entitymanager): Response
     {
         if($this->isCsrfTokenValid("SUP". $commentaires->getId(),$request->get('_token'))){
