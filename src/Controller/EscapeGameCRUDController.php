@@ -28,7 +28,6 @@ final class EscapeGameCRUDController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $entitymanager->persist($escapegame);
-            // dd($escapegame);
 
             $entitymanager->flush();
 
