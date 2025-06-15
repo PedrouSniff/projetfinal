@@ -21,7 +21,9 @@
     {# COMMENTAIRES #}
     <section id="commentaires">
         <h2>Commentaires</h2>
-        <a class="addCommentaire" href={{ path('app_commentaires_notes_create', {'id': escapegame.id }) }}>Ajouter un commentaire</a>
+        {% if is_granted('ROLE_USER') %}            
+            <a class="addCommentaire" href={{ path('app_commentaires_notes_create', {'id': escapegame.id }) }}>Ajouter un commentaire</a>
+        {% endif %}
         <div class="commentaire">                    
             {% for commentaire in commentaires %}
                 <div class="commentaires">

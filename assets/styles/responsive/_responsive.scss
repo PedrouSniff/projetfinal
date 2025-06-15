@@ -4,7 +4,7 @@
 
 @media screen and (max-width: 1083px) {
     header nav ul {
-        gap: 2rem;
+        gap: 1rem;
     }
 }
 
@@ -23,28 +23,39 @@
   display: none;
 }
 
-@media screen and (max-width: 907px) {
+@media screen and (max-width: 933px) {
+    .login,.logout {
+        margin-top: 1rem;
+    }
 
-  .logo {
-    display: none;
-  }
+    .logo {
+        display: none;
+    }
 
-  .logoburger {
-    display: flex;
-    align-items: center;
+    .logoburger {
+        display: flex;
+        align-items: center;
 
-    li {
-        a {
-            img {
-                height: 100px;
+        li {
+            a {
+                img {
+                    height: 100px;
+                }
             }
         }
     }
-  }
+
+    header nav ul .nav_liens {
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+    }
 
   header nav ul .nav_liens a {
     color: white;
     padding: 0.5rem 1rem;
+    margin-right: 2rem;
     }
 
   .burger {
@@ -78,10 +89,10 @@
         &.active {
             display: block;
             position: absolute;
-            top: 40px; 
-            right: 0;
+            right: 0px;
+            top: 130px;
             background-color: black;
-            width: 500px;
+            width: 100vw;
             padding: 1rem;
         }
     }
@@ -126,21 +137,9 @@
             flex-wrap: wrap;
         }
     }
-
-    .nav_menu.active {
-        right: 0px;
-        top: 150px;
-    }
 }
 
 @media screen and (max-width: 510px) {
-
-    .nav_menu {
-
-        &.active {
-            width: 450px;
-        }
-    }
 
     #profil div {
         padding: 1rem 2rem;
@@ -158,14 +157,12 @@
         padding: 0.5rem 1rem;
     }
 
-    .nav_menu {
-
-        &.active {
-            width: 430px;
-        }
-    }
-
     #commentaires .commentaire .commentaires {
         padding: 0.5rem 1.0rem;
+    }
+
+    #accueil .cartes .escapegames .escapegame img {
+        width: 100%;
+        height: auto;
     }
 }
