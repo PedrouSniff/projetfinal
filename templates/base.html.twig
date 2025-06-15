@@ -38,7 +38,7 @@
                             {% else %}
                                 <li><a class="{% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %} login" href={{ path('app_login')}}>Connexion</a></li>
                             {% endif %}
-                            <li><a class="{% if app.request.attributes.get('_route') == 'app_calendrier' %}active{% endif %}" href="{{ path('app_calendrier') }}">Calendrier</a></li>       
+                            <li><a class="{% if app.request.attributes.get('_route') == 'app_calendrier' %}active{% endif %}" href={{ path('app_calendrier') }}>Calendrier</a></li>       
                             <li><a class="{% if app.request.attributes.get('_route') == 'app_contact' %} active {% endif %}" href={{ path('app_contact')}}>Contact</a></li>
                         </div>
                     </ul>

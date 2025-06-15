@@ -16,10 +16,10 @@
             <h3>Les nouveautés</h3>
             <div class="escapegames">
                 {% for escapegame in escapegames %}
-                    <div class="escapegame">
+                    <a href={{ path('app_escape_game')}} class="escapegame">
                         <h3>{{ escapegame.nom }}</h3>
                         <img src="{{ asset('images/' ~ escapegame.imageName) }}" alt="">
-                    </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>
