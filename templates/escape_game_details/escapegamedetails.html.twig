@@ -9,7 +9,11 @@
             <h3>{{escapegame.nom}}</h3>
             <p>{{escapegame.description}}</p>
             <p>Durée : {{ escapegame.duree|date('H:i') }}</p>
-            <p>Difficulté : {{escapegame.difficulte}}</p>
+            <p>Difficulté : 
+                {% for i in 1..escapegame.difficulte %}
+                    <i class="fa-solid fa-star"></i>                            
+                {% endfor %}    
+            </p>
             <img src="{{ asset('images/' ~ escapegame.imageName) }}" alt="">
         </div>
     </section>
@@ -17,6 +21,7 @@
     {# COMMENTAIRES #}
     <section id="commentaires">
         <h2>Commentaires</h2>
+        <a class="addCommentaire" href={{ path('app_commentaires_notes_create', {'id': escapegame.id }) }}>Ajouter un commentaire</a>
         <div class="commentaire">                    
             {% for commentaire in commentaires %}
                 <div class="commentaires">
@@ -26,17 +31,18 @@
                         <i class="fa-solid fa-star"></i>                            
                     {% endfor %}
                     </p>
-                </div> 
-                {% if commentaire.user == app.user %}
-                    <a class="modifier" href="{{ path('app_commentaires_notes_update', {'id': commentaire.id}) }}">modifier</a>
-                    <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_commentaires_notes_delete', {'id': commentaire.id}) }}">
-                        <input type="hidden" name="_method" value="delete"> 
-                        <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ commentaire.id) }}">
-                        <input id="delete" type="submit" value="Supprimer">     
-                    </form>
-                {% endif %}
+                    <div class="buttons">
+                        {% if commentaire.user == app.user %}
+                            <a class="modifier" href="{{ path('app_commentaires_notes_update', {'id': commentaire.id}) }}">modifier</a>
+                            <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_commentaires_notes_delete', {'id': commentaire.id}) }}">
+                                <input type="hidden" name="_method" value="delete"> 
+                                <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ commentaire.id) }}">
+                                <input id="delete" type="submit" value="Supprimer">     
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
             {% endfor %}
-        </div>
+        </div>    
     </section>
-        <a href={{ path('app_commentaires_notes_create', {'id': escapegame.id }) }}>Ajouter un commentaire</a>
 {% endblock %}

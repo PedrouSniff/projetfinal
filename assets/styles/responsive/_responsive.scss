@@ -1,0 +1,171 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+@media screen and (max-width: 1083px) {
+    header nav ul {
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 1021px) {
+    header nav ul {
+        gap: 0.5rem;
+    }
+    
+    header nav ul .nav_liens {
+        display: flex;
+        gap: 1rem;
+    }
+}
+
+.logoburger, .burger {
+  display: none;
+}
+
+@media screen and (max-width: 907px) {
+
+  .logo {
+    display: none;
+  }
+
+  .logoburger {
+    display: flex;
+    align-items: center;
+
+    li {
+        a {
+            img {
+                height: 100px;
+            }
+        }
+    }
+  }
+
+  header nav ul .nav_liens a {
+    color: white;
+    padding: 0.5rem 1rem;
+    }
+
+  .burger {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+  }
+
+  header {
+    nav {
+        justify-content: space-between;
+
+    }
+  }
+
+  .nav_menu {
+    display: none;
+  }
+
+.nav_menu {
+  display: none;
+}
+
+    .nav_menu {
+
+        .logo {
+            display: none;
+        }
+
+        &.active {
+            display: block;
+            position: absolute;
+            top: 40px; 
+            right: 0;
+            background-color: black;
+            width: 500px;
+            padding: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cartes {
+
+        .escapegames {
+            @include mixins.flex ($direction : column, $justify : center, $align : center, $wrap: wrap);
+
+            .escapegame {
+                @include mixins.flex($direction: column);
+                width: 300px;
+            }
+        }
+    }
+
+    #calendrier #calendar {
+        width: 100%;
+    }
+
+    .form {
+        width: auto;
+    }
+
+    footer {
+        flex-direction: column;
+
+        p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            margin-bottom: 1rem;
+        }
+    }
+
+    header {
+        nav {
+            flex-wrap: wrap;
+        }
+    }
+
+    .nav_menu.active {
+        right: 0px;
+        top: 150px;
+    }
+}
+
+@media screen and (max-width: 510px) {
+
+    .nav_menu {
+
+        &.active {
+            width: 450px;
+        }
+    }
+
+    #profil div {
+        padding: 1rem 2rem;
+    }
+}
+
+@media screen and (max-width: 465px) {
+
+    #escapegame .cartes img {
+        width: 100%;
+        height: auto;
+    }
+
+        #profil div {
+        padding: 0.5rem 1rem;
+    }
+
+    .nav_menu {
+
+        &.active {
+            width: 430px;
+        }
+    }
+
+    #commentaires .commentaire .commentaires {
+        padding: 0.5rem 1.0rem;
+    }
+}

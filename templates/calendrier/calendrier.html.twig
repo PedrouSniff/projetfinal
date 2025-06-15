@@ -1,8 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}réservation{% endblock %}
+{% block title %}Calendrier de réservation{% endblock %}
 
 {% block MAIN %}
-    {# CALENDRIER DE RÉSERVATION #}
-    <section id="réservation"></section>
+    <section id="calendrier">
+        <h2>Calendrier de réservation</h2>
+        <a href="{{ path('app_reservation_ajouter') }}">Réservez votre date !</a>
+        <div id="calendar" style="margin-top: 20px;"></div>
+    </section>
+{% endblock %}
+
+{% block JAVASCRIPT %}
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarData = {{ data|raw }};
+            const calendarEl = document.getElementById('calendar');
+
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridWeek,timeGridDay'
+                },
+                events: calendarData,
+            });
+
+            calendar.render();
+        }); 
+    </script>
 {% endblock %}

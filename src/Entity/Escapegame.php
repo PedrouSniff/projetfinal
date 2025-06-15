@@ -201,7 +201,7 @@ class Escapegame
 
     #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
-
+    
     #[ORM\Column(nullable: true)]
     private ?string $imageName = null;
 

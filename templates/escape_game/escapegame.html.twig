@@ -9,7 +9,9 @@
             <h2>Nos Escape Game</h2>
             <p>Bienvenue dans notre Escape Game !</p>
             <p>Préparez-vous à résoudre des énigmes et à vous</p>
-            <a href={{ path('app_escape_game_create')}}>Nouveau Escape Game</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href={{ path('app_escape_game_create')}}>Nouveau Escape Game</a>
+            {% endif %}
         </div>
 
         <div class="cartes">

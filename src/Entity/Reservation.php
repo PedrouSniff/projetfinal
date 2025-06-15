@@ -13,30 +13,18 @@ class Reservation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?\DateTime $date = null;
-
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     private ?Escapegame $escapegame = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     private ?User $user = null;
 
+    #[ORM\Column]
+    private ?\DateTime $start = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDate(): ?\DateTime
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTime $date): static
-    {
-        $this->date = $date;
-
-        return $this;
     }
 
     public function getEscapegame(): ?Escapegame
@@ -59,6 +47,18 @@ class Reservation
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getStart(): ?\DateTime
+    {
+        return $this->start;
+    }
+
+    public function setStart(\DateTime $start): static
+    {
+        $this->start = $start;
 
         return $this;
     }

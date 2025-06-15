@@ -26,6 +26,7 @@
         margin-bottom: 15px;
         font-size: 17px;
         font-family: "Lora";
+        resize: none;
     }
 
     button {
@@ -41,6 +42,8 @@
         cursor: pointer;
         font-weight: bold;
         font-family: "Lora";
+
+        @include mixins.hover(v.$accentcolor);
     }
 }
 
@@ -53,8 +56,16 @@ section h2 {
     font-family: "SpecialElite";
 }
 
-#connexion, #inscriptionForm, #escapegamecreate, #escapegameupdate,#commentairesNotescreate, #commentairesupdate, #contact {
+#connexion, #inscriptionForm, #escapegamecreate, #escapegameupdate,#commentairesNotescreate, #commentairesupdate, #contact, #réservation {
     @include mixins.flex($direction: column);
     background-color: v.$primarycolor;
     padding-bottom: 3rem;
+}
+
+.form a {
+    color: v.$primarycolor;
+    text-align: center;
+    margin-top: 1rem;
+    display: block;
+    font-family: "Lora";
 }

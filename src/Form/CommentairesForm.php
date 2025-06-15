@@ -18,6 +18,14 @@ class CommentairesForm extends AbstractType
         $builder
             ->add('texte', TextareaType::class, [
                 'label' => ' ',
+                "constraints" => [
+                    new \Symfony\Component\Validator\Constraints\Length([
+                        'min' => 10,
+                        'max' => 100,
+                        'minMessage' => 'Le mot de passe doit contenir au moins 10 caractères.',
+                        'maxMessage' => 'Le mot de passe doit contenir au maximum 100 caractères.',
+                    ]),
+                ],
             ])
         ;
     }

@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[IsGranted("ROLE_ADMIN")]
-final class EscapeGameCRUDController extends AbstractController
+final class EscapeCRUDController extends AbstractController
 {
     // CREATION ESCAPE GAME
     #[Route('/escape_game/create', name: 'app_escape_game_create')]

@@ -41,27 +41,39 @@
         margin-top: 0rem;
     }
 
+    .addCommentaire {
+        color: white;
+        font-size: 17px;
+        font-family: "Lora";
+        
+        @include mixins.hover(v.$accentcolor);
+    }
+
     .commentaire {
+        width: 90%;
         margin-top: 4rem;
         text-align: center;
-        @include mixins.flex();
+        @include mixins.flex($direction : row, $justify : center, $align : center, $wrap: wrap);
 
 
         .ALLavis {
-            @include mixins.flex();
+            @include mixins.flex($direction : column, $justify : center, $align : center, $wrap: wrap);
             gap: 2rem;
         }
 
         .commentaires {
             padding: 1.5rem 2rem;
-            width: 300px;
             border-radius: 8px;
             background-color: white;
             transition: border-color 0.3s;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            margin-bottom: 2rem;
 
             p {
                 font-family: "Lora";
                 width: 100%;  
+                width: 350px;
                 color: v.$primarycolor;
                 font-size: 16px;
                 margin: 0.5rem 0;
@@ -70,6 +82,39 @@
             .note {
                 color: v.$accentcolor;
                 font-size: 20px;
+            }
+
+            .buttons {
+                @include mixins.flex();
+                gap: 1rem;
+                margin-top: 1rem;
+
+                a.modifier,
+                #delete {
+                    padding: 0.4rem 1.0rem;
+                    border: none;
+                    border-radius: 8px;
+                    font-family: "Lora";
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+
+                a.modifier {
+                    padding: 0.3rem 1.0rem;
+                    background-color: v.$secondarycolor;
+                    color: white;
+
+                    @include mixins.hover(v.$accentcolor);
+                }
+
+                #delete {
+                    background-color: v.$secondarycolor;
+                    color: white;
+
+                    @include mixins.hover(v.$accentcolor);
+                }
             }
         }
     }

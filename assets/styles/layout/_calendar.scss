@@ -1,0 +1,28 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+// CALENDAR
+#calendrier {
+    background-color: v.$primarycolor;
+    @include mixins.flex(column);
+    height: 100%;
+    padding: 4rem 2rem;
+
+    h2 {
+        margin-top: 0rem;
+    }
+
+    a {
+        font-family: "Lora";
+        color: v.$secondarycolor;
+
+        @include mixins.hover(v.$accentcolor);
+    }
+
+    #calendar {
+        width: 80%;
+        margin: auto;
+        background-color: white;
+    }
+}

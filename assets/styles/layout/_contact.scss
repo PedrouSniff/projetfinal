@@ -1,0 +1,57 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+// CONTACT
+#contact {
+    background-color: v.$primarycolor;
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-top: 0rem;
+    @include mixins.flex($direction: column);
+
+    h3 {
+        font-family: "SpecialElite";
+        color: white;
+        font-size: 28px;
+        margin-bottom: 2rem;
+        margin-top: 0rem;
+    }
+
+    p {
+        font-family: "Lora";
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 17px;
+        max-width: 80vw;
+    }    
+
+    a {
+        display: inline-block;
+        font-size: 40px;
+        color: v.$secondarycolor;
+        @include mixins.hover(v.$accentcolor)
+    }
+
+    .reseaux {
+        margin-top: 2rem;
+        text-align: center;
+
+        ul {
+            @include mixins.flex();
+            gap: 4rem;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        a {
+            display: inline-block;
+            font-size: 40px;
+            color: v.$secondarycolor;
+            @include mixins.hover(v.$accentcolor)
+        }
+    }
+
+}

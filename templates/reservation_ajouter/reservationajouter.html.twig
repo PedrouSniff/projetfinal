@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block MAIN %}
+    {# FORMULAIRE D'INSCRIPTION #}
+    <section id="réservation">
+        <h2>Inscrivez-vous !</h2>
+        <div class="form">
+            {{ form_start(reservationform) }}         
+                {{ form_widget(reservationform) }}
+                <button>Envoyer</button>
+            {{ form_end(reservationform) }}
+        </div>
+    </section>
+{% endblock %}

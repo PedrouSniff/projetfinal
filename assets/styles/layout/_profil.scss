@@ -1,0 +1,34 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+#profil {
+    @include mixins.flex(column);
+    min-height: 60vh;
+    background-color: v.$primarycolor;
+    padding: 4rem 2rem;
+
+    div {
+        background-color: white;
+        padding: 2rem 3rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+        font-family: "Lora";
+
+        h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: v.$secondarycolor;
+            font-family: "SpecialElite";
+        }
+
+        p {
+            margin: 0.5rem 0;
+            font-size: 17px;
+            color: v.$primarycolor;
+        }
+    }
+}
