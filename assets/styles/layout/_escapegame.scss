@@ -37,7 +37,7 @@
     }
 
     .cartes {
-        width: 100vw;
+        width: 100%;
         @include mixins.flex($direction : row, $justify : center, $align : center, $wrap: wrap);
 
         .escapegame {
