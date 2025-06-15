@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         const email = this.getAttribute('data-email');
 
-        navigator.clipboard.writeText(email).then(() => {
+        // navigator.clipboard.writeText(email).then(() => {
             alert("Email copié : " + email);    
-        }).catch(err => {
-            console.error("Échec de la copie :", err);
-        });
+        // }).catch(err => {
+        //     console.error("Échec de la copie :", err);
+        // });
     });
 });
