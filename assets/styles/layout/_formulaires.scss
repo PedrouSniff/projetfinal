@@ -55,6 +55,9 @@ section h2 {
     margin-bottom: 2rem;
     font-family: "SpecialElite";
 }
+#réservation {
+    min-height: calc(100vh - 368px);
+}
 
 #connexion, #inscriptionForm, #escapegamecreate, #escapegameupdate,#commentairesNotescreate, #commentairesupdate, #contact, #réservation {
     @include mixins.flex($direction: column);
