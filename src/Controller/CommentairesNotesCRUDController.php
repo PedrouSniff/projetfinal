@@ -79,7 +79,7 @@ final class CommentairesNotesCRUDController extends AbstractController
             $entitymanager->persist($note);
 
             $entitymanager->flush();
-
+            
             $this->addflash('success', 'Votre commentaire et votre note a bien été modifié');
 
             return $this->redirectToRoute('app_escape_game');

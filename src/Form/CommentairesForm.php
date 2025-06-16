@@ -22,8 +22,8 @@ class CommentairesForm extends AbstractType
                     new \Symfony\Component\Validator\Constraints\Length([
                         'min' => 10,
                         'max' => 100,
-                        'minMessage' => 'Le mot de passe doit contenir au moins 10 caractères.',
-                        'maxMessage' => 'Le mot de passe doit contenir au maximum 100 caractères.',
+                        'minMessage' => 'Le commentaire doit contenir au moins 10 caractères.',
+                        'maxMessage' => 'Le commentaire doit contenir au maximum 100 caractères.',
                     ]),
                 ],
             ])
